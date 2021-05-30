@@ -1,5 +1,5 @@
 import word2vec
-
+import torch
 
 def get_word2vec_dict(path):
     '''
@@ -14,4 +14,5 @@ def get_word2vec_dict(path):
 
 word2vec.word2vec(path_d+'word2vec_dict.txt', path_d+'word2vec.bin', size=config.wt_d_model, min_count=1, binary=True, verbose=True)
 weight = word2vec.load(path_d + 'word2vec.bin').vectors
+weight = torch.Tensor(weight)
 # send weight to nn.Embedding
